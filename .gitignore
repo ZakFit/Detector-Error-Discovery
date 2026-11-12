@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.ipynb_checkpoints
+weights/
+
+# данные соревнования не коммитим; коммитим только посчитанные ответы независимых моделей
+data/*
+!data/second_opinion_yolov8s-seg.csv
+!data/second_opinion_yolo11m-pose.csv
+!data/second_opinion_owlv2.csv
+!data/owl_zoom.csv
