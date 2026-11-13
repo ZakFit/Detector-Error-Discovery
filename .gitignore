@@ -18,3 +18,4 @@ data/*
 !data/ftS_*.csv
 !data/ruslan_oof.csv
 !data/compare_ideas.csv
+!data/ruslan_person_scores.csv
