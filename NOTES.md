@@ -84,6 +84,10 @@
   руки AUC 0.958 (переразметка 0.837), люди 0.80–0.84 (0.719); смесь AP 0.846 → 0.887.
   Обучение на 25.10 (мало данных) → 26.10 слабо (AP 0.61). Финальная модель — на всех 84 кадрах.
 - Кандидат: submissions/sub_reannotate_ft.csv (final_ft.py) = среднее score переразметки и 1−IoU с дообученным YOLO.
+- **Public 0.842** (sub_reannotate_ft.csv = sub_ft_all.csv, `final_ft.py ft_all.csv`) — лучший у команды.
+- На отложенном 25.10 (YOLO11n d26): вес YOLO 0.5 оптимален; IoU×conf 0.894 vs IoU 0.887; TTA хуже.
+- YOLO11s дообучен на всём train (60 эпох, ~70 мин CPU) → data/ft_all_s.csv. Без проверки по дням.
+- Ансамбль n+s: sub_ft_all_all_s.csv (голый IoU, spearman с 0.842 = 0.975), sub_ft_all_all_s_conf.csv (0.94).
 
 ## Как воспроизвести
 .venv/bin/python second_opinion.py <yolov8s-seg.pt> <yolo11m-pose.pt>; .venv/bin/python owl_opinion.py; .venv/bin/python final.py
