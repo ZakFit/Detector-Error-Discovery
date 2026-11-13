@@ -1,0 +1,15 @@
+{
+  "models": {
+    "deim_m.onnx": {
+      "sha256": "70a52f694e7496cecb42889dfe2b85ef75836e10433b1d86c2cc86db7b4e507f",
+      "bytes": 73065580
+    },
+    "rtmpose_m26.onnx": {
+      "sha256": "26f3a19e61304a600dfb82d1001d41d24343b89fc70a33ffc84657e0b0bf2ecf",
+      "bytes": 55685444
+    }
+  },
+  "device": "CPU",
+  "batch_size": 1,
+  "precision": "FP32"
+}

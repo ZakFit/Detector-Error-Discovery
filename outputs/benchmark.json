@@ -1,0 +1,22 @@
+{
+  "device": "CPUExecutionProvider",
+  "threads": 4,
+  "batch_size": 1,
+  "precision": "FP32",
+  "logical_processors": 12,
+  "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+  "detector": {
+    "count": 12,
+    "median_seconds": 0.4935147999999572,
+    "mean_seconds": 0.49126254166678035,
+    "total_seconds": 5.895150500001364
+  },
+  "pose": {
+    "count": 32,
+    "median_seconds": 0.016113850000238017,
+    "mean_seconds": 0.015970909375056408,
+    "total_seconds": 0.511069100001805
+  },
+  "peak_process_rss_mib": 539.22265625,
+  "timing_scope": "per-model preprocessing + ONNX inference + decoding; excludes disk reads and model initialization"
+}

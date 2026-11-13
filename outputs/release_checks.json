@@ -1,0 +1,12 @@
+{
+  "person_rows": 153,
+  "unique_person_ids": 153,
+  "complete_test_rows": 362,
+  "unchanged_other_rows": 209,
+  "score_min": 0.05949397120067379,
+  "score_max": 0.9618280443648047,
+  "saved_scorer_max_abs_difference": 5.551115123125783e-17,
+  "rank_merge_preserves_person_distribution": true,
+  "non_person_values_preserved_exactly": true,
+  "person_scores_sha256": "307e6cdfaf222e0b3ad9f8ea804fd850fe626e8d9a806966f079e07860f537ef"
+}
