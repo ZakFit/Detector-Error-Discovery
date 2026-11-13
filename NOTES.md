@@ -108,7 +108,8 @@
   IoU 0.6, поэтому сигнал = макс. уверенность YOLO среди её боксов (почти без NMS) с IoU >= 0.6, усреднённый по
   целевому и соседним кадрам. Люди как в 0.842, руки/чашки/подносы переупорядочены. AP отложенных дней:
   база 0.889 / 0.829 → step 0.903 / 0.848 → **step_t 0.902 / 0.855**; сырой IoU по времени хуже (руки двигаются).
-- Кандидат на 13.11: submissions/sub_step_all_all_s.csv (step_t, ансамбль YOLO11n + 11s).
+- sub_step_all_all_s.csv → Public **0.808** (хуже 0.842). Прирост +0.01…+0.03 на отложенных днях снова не перенёсся.
+- YOLO11n seed=1 готов (data/ft_all_1.csv); final_ens.py на 3 моделях → submissions/sub_ens_all_all_s_all_1.csv (не отправлен).
 
 ## Как воспроизвести
 .venv/bin/python second_opinion.py <yolov8s-seg.pt> <yolo11m-pose.pt>; .venv/bin/python owl_opinion.py; .venv/bin/python final.py
