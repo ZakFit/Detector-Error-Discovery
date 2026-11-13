@@ -16,3 +16,5 @@ data/*
 !data/ft_d26_s.csv
 !data/ft_all_1.csv
 !data/ftS_*.csv
+!data/ruslan_oof.csv
+!data/compare_ideas.csv

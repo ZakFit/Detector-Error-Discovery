@@ -21,10 +21,11 @@ from features import D
 ROOT = Path(__file__).parent
 WORK = ROOT / 'data' / 'yolo'
 CLASSES = ['person', 'nude_hands', 'cup', 'tray']
-EPOCHS, IMGSZ = int(os.environ.get('EPOCHS', 60)), 960
+EPOCHS, IMGSZ = int(os.environ.get('EPOCHS', 60)), int(os.environ.get('IMGSZ', 960))
 BASE = os.environ.get('BASE', 'yolo11n')  # yolo11n / yolo11s; у не-n моделей суффикс в имени прогона
 SEED = int(os.environ.get('SEED', 0))     # другой seed — ещё одна модель для ансамбля (суффикс _<seed>)
-SUFFIX = ('' if BASE == 'yolo11n' else f'_{BASE[-1]}') + (f'_{SEED}' if SEED else '')
+SUFFIX = (('' if BASE == 'yolo11n' else f'_{BASE[-1]}') + (f'_{SEED}' if SEED else '')
+          + (f'_{IMGSZ}' if IMGSZ != 960 else ''))
 
 
 def build_dataset(fold, frames):
