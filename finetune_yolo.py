@@ -73,7 +73,7 @@ def main(folds):
         cfg = build_dataset(fold, fit_frames)
         w = ROOT / 'weights' / f'{BASE}.pt'
         model = YOLO(w if w.exists() else f'{BASE}.pt')
-        model.train(data=str(cfg), epochs=EPOCHS, imgsz=IMGSZ, batch=4, workers=2, device='cpu', cache=False,
+        model.train(data=str(cfg), epochs=EPOCHS, imgsz=IMGSZ, batch=int(os.environ.get('BATCH', 4)), workers=2, device='cpu', cache=False,
                     project=str(WORK / 'runs'), name=f'{fold}{SUFFIX}', exist_ok=True, val=False, plots=False, verbose=False,
                     fliplr=0.5, mosaic=1.0, close_mosaic=10, patience=0, seed=SEED)
         predict(model, pred_frames, out)

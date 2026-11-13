@@ -73,7 +73,7 @@ def main(mode):
         return
     cfg = build(fold, list(labeled), pseudo, teacher)
     model = YOLO(ROOT / 'weights' / 'yolo11n.pt')
-    model.train(data=str(cfg), epochs=EPOCHS, imgsz=IMGSZ, batch=4, workers=2, device='cpu', cache=False,
+    model.train(data=str(cfg), epochs=EPOCHS, imgsz=IMGSZ, batch=int(os.environ.get('BATCH', 4)), workers=2, device='cpu', cache=False,
                 project=str(WORK / 'runs'), name=fold, exist_ok=True, val=False, plots=False, verbose=False,
                 fliplr=0.5, mosaic=1.0, close_mosaic=10, patience=0)
     predict(model, list(targets), out)
