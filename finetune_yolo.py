@@ -23,7 +23,8 @@ WORK = ROOT / 'data' / 'yolo'
 CLASSES = ['person', 'nude_hands', 'cup', 'tray']
 EPOCHS, IMGSZ = int(os.environ.get('EPOCHS', 60)), 960
 BASE = os.environ.get('BASE', 'yolo11n')  # yolo11n / yolo11s; у не-n моделей суффикс в имени прогона
-SUFFIX = '' if BASE == 'yolo11n' else f'_{BASE[-1]}'
+SEED = int(os.environ.get('SEED', 0))     # другой seed — ещё одна модель для ансамбля (суффикс _<seed>)
+SUFFIX = ('' if BASE == 'yolo11n' else f'_{BASE[-1]}') + (f'_{SEED}' if SEED else '')
 
 
 def build_dataset(fold, frames):
@@ -73,7 +74,7 @@ def main(folds):
         model = YOLO(w if w.exists() else f'{BASE}.pt')
         model.train(data=str(cfg), epochs=EPOCHS, imgsz=IMGSZ, batch=4, workers=2, device='cpu', cache=False,
                     project=str(WORK / 'runs'), name=f'{fold}{SUFFIX}', exist_ok=True, val=False, plots=False, verbose=False,
-                    fliplr=0.5, mosaic=1.0, close_mosaic=10, patience=0)
+                    fliplr=0.5, mosaic=1.0, close_mosaic=10, patience=0, seed=SEED)
         predict(model, pred_frames, out)
 
 

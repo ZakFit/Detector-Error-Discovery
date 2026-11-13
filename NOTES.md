@@ -95,6 +95,15 @@
 - **Сопоставление один-к-одному с боксами YOLO, как в метке** (`final_ft.py --match`): лучше на обоих днях.
   AP 25.10 / 26.10: max IoU 0.887 / 0.837 → max IoU×conf 0.894 / 0.866 → **1-к-1 ×conf 0.902 / 0.876**.
   Больше всего выросли люди (25.10 AUC 0.83 → 0.89). Кандидат: submissions/sub_ft_all_match_conf.csv.
+- Public: sub_ft_all_match_conf **0.829** (хуже 0.842) — изменил людей (146 строк), на test не перенеслось.
+- Public: командный submission_crop_person_0842 (Riptede) **0.866** — лучший. Разбор файла
+  (submissions/team_crop_person_0866.csv): люди байт в байт как в 0.842; изменены руки/чашки/подносы, их порядок
+  ближе всего к ансамблю YOLO11n+11s (spearman: руки 0.97, подносы 0.965 c ×conf; чашки 0.96 голый IoU),
+  масштаб score ≈ 0.842, 12 боксов = 1.0 (видимо, «crop»-проверка явных ложных). Кода этого сабмита в git нет;
+  ветка ruslan/person-pipeline — отдельный пайплайн для людей (DEIMv2 + RTMPose + LR), в 0.866 не использован.
+- Правило: людей не трогаем (обе попытки ухудшили Public). Кандидат final_ens.py → sub_ens_all_all_s.csv:
+  люди = 0.842, руки/чашки/подносы переупорядочены ансамблем n+s (×conf) со значениями score из 0.842.
+- Запущен YOLO11n seed=1 на всём train (SEED=1 → data/ft_all_1.csv) — третья модель ансамбля.
 
 ## Как воспроизвести
 .venv/bin/python second_opinion.py <yolov8s-seg.pt> <yolo11m-pose.pt>; .venv/bin/python owl_opinion.py; .venv/bin/python final.py
