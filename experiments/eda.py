@@ -7,7 +7,7 @@ import pandas as pd
 from scipy.optimize import linear_sum_assignment
 from sklearn.metrics import average_precision_score
 
-D = Path(__file__).parent / 'data' / 'raw'
+D = Path(__file__).resolve().parent.parent / 'data' / 'raw'
 W, H = 1280, 720
 pd.set_option('display.width', 200)
 pd.set_option('future.infer_string', False)

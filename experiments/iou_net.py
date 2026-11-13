@@ -21,7 +21,7 @@ from torchvision.ops import roi_align
 
 from features import BOX, D, iou_matrix, load
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parent.parent
 CLASSES = ['person', 'nude_hands', 'cup', 'tray']
 GRID, CONTEXT, N_JITTER = 4, 1.25, 40
 torch.set_num_threads(int(__import__('os').environ.get('THREADS', 10)))

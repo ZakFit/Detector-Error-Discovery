@@ -15,7 +15,7 @@ from sklearn.metrics import average_precision_score
 from features import D, build
 from opinion_features import opinion_features
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parent.parent
 W = 1.0
 AGREE = {'cup': 'seg_iou_conf', 'person': 'seg_iou_conf', 'nude_hands': 'wrist_conf_in'}
 

@@ -9,7 +9,7 @@ from sklearn.metrics import average_precision_score
 from features import D, build
 
 warnings.filterwarnings('ignore')
-OUT = Path(__file__).parent / 'submissions'
+OUT = Path(__file__).resolve().parent.parent / 'submissions'
 
 
 def class_prior(df, train):

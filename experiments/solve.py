@@ -17,7 +17,7 @@ from sklearn.preprocessing import StandardScaler
 from features import D, FEATURES, build
 
 warnings.filterwarnings('ignore')
-OUT = Path(__file__).parent / 'submissions'
+OUT = Path(__file__).resolve().parent.parent / 'submissions'
 
 
 # Признаки отобраны жадно от confidence (критерий — AP по дням + GroupKFold по кадрам)

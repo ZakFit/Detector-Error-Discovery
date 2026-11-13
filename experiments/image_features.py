@@ -10,7 +10,7 @@ from PIL import Image
 
 from features import BOX, D, iou_matrix, load
 
-ROOT = Path(__file__).parent
+ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / 'data' / 'cache'
 EMPTY_HOURS = [0, 1, 2, 3, 4]
 

@@ -18,19 +18,24 @@ ln -sfn .kagglehub/competitions/rascar-hack-case-1 data/raw
 ```
 pandas 3: в `features.py` выставлено `future.infer_string=False`, иначе numpy-бродкастинг строковых колонок падает.
 
-## Текущее лучшее решение — переразметка (`reannotate.py`)
-Идея: confidence детектора на test переносится плохо; лучше заново «разметить» кадр независимыми открытыми моделями
-и оценивать детекцию по IoU с их боксами (это напрямую эмулирует правило метки).
-- руки / чашки / подносы — OWLv2 на увеличенном окне вокруг детекции (`owl_zoom.py`);
-- люди — среднее: IoU с OWLv2 + yolov8s-seg + yolo11m-pose, IoU с «полным» боксом тела по ключевым точкам pose, confidence;
-- `score = 1 − согласие` (+0.01·(1−conf) для ничьих). Обучения нет.
+## Текущее лучшее решение — Public 0.842 (`final_ft.py`)
+Идея: confidence детектора на test переносится плохо; лучше заново «разметить» кадр и оценивать детекцию по IoU
+с этими боксами (это напрямую эмулирует правило метки). score = среднее двух частей:
+1. Переразметка открытыми моделями (`reannotate.py`, сама по себе 0.712):
+   руки / чашки / подносы — OWLv2 на увеличенном окне (`owl_zoom.py`); люди — среднее IoU с OWLv2 + yolov8s-seg +
+   yolo11m-pose, IoU с «полным» боксом тела по ключевым точкам, confidence. score = 1 − согласие.
+2. YOLO11n, дообученный на ручной разметке train (`finetune_yolo.py`, прогон `all`): 1 − IoU с его боксом того же класса.
+   Это главный прирост (0.712 → 0.842): модель учит стиль разметчика.
 
-Запуск: `.venv/bin/python reannotate.py` → `submissions/sub_reannotate_person3.csv` (+ AP по дням train в консоль).
-Ответы моделей уже посчитаны и лежат в `data/*.csv` (в git). Пересчёт с нуля, CPU ~1 ч:
-`second_opinion.py <yolov8s-seg.pt> <yolo11m-pose.pt>` → `owl_opinion.py` → `owl_zoom.py`.
+Запуск: `.venv/bin/python final_ft.py ft_all.csv` → `submissions/sub_ft_all.csv` (воспроизводит 0.842 байт в байт).
+`--conf` — IoU × уверенность YOLO (на отложенном дне +0.007); без аргументов — ансамбль всех `data/ft_all*.csv`.
+Ответы моделей уже посчитаны и лежат в `data/*.csv` (в git). Пересчёт с нуля, CPU ~1.5 ч:
+`second_opinion.py <yolov8s-seg.pt> <yolo11m-pose.pt>` → `owl_opinion.py` → `owl_zoom.py` → `finetune_yolo.py`.
+Честная проверка дообучения: `eval_finetune.py` (YOLO на одном дне → другой день). На 25.10 мало разметки,
+поэтому прогон d25 → 26.10 слабый; показателен d26 → 25.10.
 
 ## Веса (для отчёта финалистов — указывать название и URL)
-- YOLOv8s-seg, YOLO11m-pose — https://github.com/ultralytics/assets/releases (официальные COCO-веса ultralytics)
+- YOLO11n / YOLO11s (дообучение), YOLOv8s-seg, YOLO11m-pose — https://github.com/ultralytics/assets/releases
 - OWLv2 — https://huggingface.co/google/owlv2-base-patch16-ensemble
 
 ## Файлы
@@ -39,9 +44,11 @@ pandas 3: в `features.py` выставлено `future.infer_string=False`, и�
 | `features.py` | загрузка данных, IoU, табличные признаки (геометрия, перекрытия, соседние кадры ±30 с) |
 | `second_opinion.py`, `owl_opinion.py`, `owl_zoom.py` | прогон независимых моделей → `data/*.csv` |
 | `opinion_features.py` | признаки согласия с YOLO seg/pose (запястья и т.п.) |
-| `reannotate.py` | **лучшее решение** |
-| `final.py` | предыдущее: 1−(conf+OWL)/2 + перестановка внутри классов по зуму/коже/запястью (0.684) |
-| `solve.py`, `simple.py`, `rerank.py`, `image_features.py`, `eda.py` | ранние эксперименты, все хуже бейзлайна на Public |
+| `final_ft.py` | **лучшее решение** (0.842) |
+| `finetune_yolo.py`, `eval_finetune.py` | дообучение YOLO на ручной разметке и его проверка по дням |
+| `reannotate.py` | переразметка открытыми моделями (0.712), часть итога |
+| `final.py` | решение 0.684; `reannotate.py` берёт из него `OWL_QUERIES` |
+| `experiments/` | ранние эксперименты (табличные модели, правила, фон, предсказатель IoU на эмбеддингах); запуск `python -m experiments.<имя>` из корня |
 
 ## Валидация и уроки (подробно — NOTES.md)
 - Локально: AP отдельно по дням train (25.10 и 26.10), класс table исключён. Train всего 198 строк — легко переобучиться.
