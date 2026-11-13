@@ -88,6 +88,10 @@
 - На отложенном 25.10 (YOLO11n d26): вес YOLO 0.5 оптимален; IoU×conf 0.894 vs IoU 0.887; TTA хуже.
 - YOLO11s дообучен на всём train (60 эпох, ~70 мин CPU) → data/ft_all_s.csv. Без проверки по дням.
 - Ансамбль n+s: sub_ft_all_all_s.csv (голый IoU, spearman с 0.842 = 0.975), sub_ft_all_all_s_conf.csv (0.94).
+- Проверка YOLO11s (d26 → 25.10, `eval_finetune.py ensemble`): AP IoU n 0.887 / s 0.802 / n+s 0.877;
+  IoU×conf n **0.894** / s 0.829 / n+s 0.875. YOLO11s хуже (руки AUC 0.75 vs 0.94), ансамбль вредит —
+  ансамбль НЕ отправлять. Рекомендация: sub_ft_all_conf.csv (YOLO11n, IoU×conf).
+- Фоновое обучение запускать через `setsid nohup ... &` — иначе умирает при перезапуске сессии Claude Code.
 
 ## Как воспроизвести
 .venv/bin/python second_opinion.py <yolov8s-seg.pt> <yolo11m-pose.pt>; .venv/bin/python owl_opinion.py; .venv/bin/python final.py
