@@ -9,3 +9,6 @@ data/*
 !data/second_opinion_yolo11m-pose.csv
 !data/second_opinion_owlv2.csv
 !data/owl_zoom.csv
+!data/ft_d25.csv
+!data/ft_d26.csv
+!data/ft_all.csv

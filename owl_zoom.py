@@ -64,5 +64,10 @@ def main(classes=('nude_hands', 'cup', 'tray'), parts=('test', 'train'), name='o
 if __name__ == '__main__':
     if len(sys.argv) > 1 and sys.argv[1] == 'person':
         main(classes=('person',), parts=tuple(sys.argv[2:]) or ('train', 'test'), name='owl_zoom_person')
+    elif len(sys.argv) > 2 and sys.argv[1] == 'scale':
+        # дополнительный масштаб окна для рук: owl_zoom.py scale <множитель> [части...]
+        factor = float(sys.argv[2])
+        SCALE['nude_hands'], MIN_SIDE['nude_hands'] = factor, 40 * factor
+        main(classes=('nude_hands',), parts=tuple(sys.argv[3:]) or ('train', 'test'), name=f'owl_zoom_s{factor:g}')
     else:
         main()

@@ -68,6 +68,19 @@ def amodal_iou(df):
     return np.array(out)
 
 
+def full_frame_iou(df, min_score=0.1):
+    """Руки/чашки/подносы: IoU с OWLv2 на полном кадре — второй независимый взгляд к зуму."""
+    from final import OWL_QUERIES
+    owl = pd.read_csv(ROOT / 'data' / 'second_opinion_owlv2.csv')
+    frames = {k: g for k, g in owl[owl.ext_conf >= min_score].groupby('frame_id')}
+    out = []
+    for _, p in df.iterrows():
+        g = frames.get(p.frame_id)
+        g = g[g.ext_class.isin(OWL_QUERIES[p.class_name])] if g is not None else None
+        out.append(best_iou(p, g) if g is not None and p.class_name != 'person' else 0.0)
+    return np.array(out)
+
+
 def person_agree(df):
     """Люди: среднее трёх независимых сигналов — согласие моделей, полный бокс тела, confidence."""
     return np.where(df.class_name == 'person', (df.agree + df.amodal + df.confidence) / 3, df.agree)

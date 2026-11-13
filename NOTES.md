@@ -73,5 +73,17 @@
 - Кандидат: submissions/sub_reannotate_person3.csv (последний сабмит 12.11).
 - Дальше: улучшать переразметку (зум для людей, модели точнее), confidence — только как добавка.
 
+## 13.11
+- Public: sub_reannotate_person3 0.7119; от команды: sub_person_matching 0.7146, sub_grounding-dino-base 0.6906.
+- Руки/чашки/подносы: пороги OWL, IoU·score, сопоставление 1-к-1, мультимасштабный зум (×2.5, ×6),
+  max/mean с полным кадром — устойчивого прироста в общем рейтинге нет; ×4 оптимален.
+- Плотный бокс по маске кожи — не работает (AUC ~0.55).
+- Предсказатель IoU (iou_net.py, RoIAlign по эмбеддингам + ридж): resnet18, dinov2, sam — нестабилен,
+  к переразметке не добавляет (лучший sam: руки 0.93/0.73).
+- **Дообученный YOLO11n на ручной разметке (finetune_yolo.py)**: обучение на 26.10 → 25.10:
+  руки AUC 0.958 (переразметка 0.837), люди 0.80–0.84 (0.719); смесь AP 0.846 → 0.887.
+  Обучение на 25.10 (мало данных) → 26.10 слабо (AP 0.61). Финальная модель — на всех 84 кадрах.
+- Кандидат: submissions/sub_reannotate_ft.csv (final_ft.py) = среднее score переразметки и 1−IoU с дообученным YOLO.
+
 ## Как воспроизвести
 .venv/bin/python second_opinion.py <yolov8s-seg.pt> <yolo11m-pose.pt>; .venv/bin/python owl_opinion.py; .venv/bin/python final.py
