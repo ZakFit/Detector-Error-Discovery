@@ -92,6 +92,9 @@
   IoU×conf n **0.894** / s 0.829 / n+s 0.875. YOLO11s хуже (руки AUC 0.75 vs 0.94), ансамбль вредит —
   ансамбль НЕ отправлять. Рекомендация: sub_ft_all_conf.csv (YOLO11n, IoU×conf).
 - Фоновое обучение запускать через `setsid nohup ... &` — иначе умирает при перезапуске сессии Claude Code.
+- **Сопоставление один-к-одному с боксами YOLO, как в метке** (`final_ft.py --match`): лучше на обоих днях.
+  AP 25.10 / 26.10: max IoU 0.887 / 0.837 → max IoU×conf 0.894 / 0.866 → **1-к-1 ×conf 0.902 / 0.876**.
+  Больше всего выросли люди (25.10 AUC 0.83 → 0.89). Кандидат: submissions/sub_ft_all_match_conf.csv.
 
 ## Как воспроизвести
 .venv/bin/python second_opinion.py <yolov8s-seg.pt> <yolo11m-pose.pt>; .venv/bin/python owl_opinion.py; .venv/bin/python final.py
