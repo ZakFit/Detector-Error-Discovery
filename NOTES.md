@@ -104,6 +104,11 @@
 - Правило: людей не трогаем (обе попытки ухудшили Public). Кандидат final_ens.py → sub_ens_all_all_s.csv:
   люди = 0.842, руки/чашки/подносы переупорядочены ансамблем n+s (×conf) со значениями score из 0.842.
 - Запущен YOLO11n seed=1 на всём train (SEED=1 → data/ft_all_1.csv) — третья модель ансамбля.
+- **Пороговое согласие во времени** (ft_stream.py → temporal_eval.py → final_step.py). Метка — ступенька на
+  IoU 0.6, поэтому сигнал = макс. уверенность YOLO среди её боксов (почти без NMS) с IoU >= 0.6, усреднённый по
+  целевому и соседним кадрам. Люди как в 0.842, руки/чашки/подносы переупорядочены. AP отложенных дней:
+  база 0.889 / 0.829 → step 0.903 / 0.848 → **step_t 0.902 / 0.855**; сырой IoU по времени хуже (руки двигаются).
+- Кандидат на 13.11: submissions/sub_step_all_all_s.csv (step_t, ансамбль YOLO11n + 11s).
 
 ## Как воспроизвести
 .venv/bin/python second_opinion.py <yolov8s-seg.pt> <yolo11m-pose.pt>; .venv/bin/python owl_opinion.py; .venv/bin/python final.py

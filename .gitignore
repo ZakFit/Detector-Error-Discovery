@@ -15,3 +15,4 @@ data/*
 !data/ft_all_s.csv
 !data/ft_d26_s.csv
 !data/ft_all_1.csv
+!data/ftS_*.csv
