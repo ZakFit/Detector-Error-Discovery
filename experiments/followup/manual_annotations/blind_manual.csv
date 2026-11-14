@@ -1,0 +1,25 @@
+review_number,x1p,y1p,x2p,y2p,quality,note
+1,36,39,62,68,high,cup
+2,40,40,62,65,medium,cup partly held
+3,40,36,62,60,medium,takeaway cup partly covered
+4,,,,,high,bottle not cup
+5,41,46,63,67,high,cup exclude hand
+6,24,45,52,78,high,cup extends below candidate
+7,46,45,67,70,high,hand phone
+8,34,39,50,59,medium,two hands on keyboard separate objects
+9,,,,,high,cup not hand
+10,36,45,55,62,medium,hand phone
+11,36,40,61,63,high,hand tablet
+12,,,,,high,bare knee through ripped jeans not hand
+13,53,20,95,82,medium,seated side include body below candidate
+14,28,16,78,70,medium,seated side partial legs
+15,24,22,74,101,low,seated hidden legs under table
+16,31,16,70,101,low,seated hidden legs under table
+17,70,16,98,65,medium,seated border
+18,,,,,high,jacket on chair not person
+19,,,,,high,table and cup without tray
+20,17,36,67,68,high,tray extends left of candidate
+21,34,40,64,61,high,tray
+22,13,37,51,62,high,tray left of candidate
+23,34,41,77,62,high,tray extends right of candidate
+24,,,,,high,plate without tray

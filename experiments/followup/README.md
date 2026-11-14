@@ -1,0 +1,13 @@
+# Follow-up to the 280 px refiner
+
+The 280 px model scored 0.91063 Public AP. `submission_manual_review_full.csv`, which blends that model with the visual audit, scored 0.93578 Public AP. The cached 280 control reproduces day-held-out AP of 0.94433015 and 0.89410075.
+
+`audit_280_followup.py` runs the aggregation, five-coordinate-feature, lower-context, targeted-synthetic and multi-box-head ablations. Run `aggregation` first to regenerate the reference predictions. All 280 experiments use seeds 117, 312 and 614. Only the person ranking is changed, with the original 50% rank mixing. The hard-synthetic experiment is separate from lower context. Each held-out split excludes real and synthetic samples from its validation day.
+
+The aggregation control computes risk after averaging offsets and existence logits. `mean_risk` averages `1 − P(exists) × IoU` across seeds. `mean_threshold_risk` replaces IoU with the indicator `IoU ≥ 0.60`. Geometry features are four coordinates relative to the realized crop and its width-to-height ratio. The lower branch adds an embedding of a second view translated down by half a box height when the image boundary permits. Hard examples truncate one side of an official box. The three-hypothesis head predicts weighted alternative boxes and an existence score.
+
+`eval_followup_scores.py` covers inter-class calibration, a prototype duplicate selector using pairwise features aggregated over competing boxes, and a pilot test of manual edge offsets. The pilot fits a regularized class offset on existing blind train annotations with the other day held out. `targeted_manual_review.py` prepares blind panels for 30 high-impact cases. Its decisions are stored in `manual_annotations/targeted_decisions.csv`. `export_followup_submissions.py` verifies the baseline reconstruction and the order of all 362 IDs. It exports conservative manual overrides and blends model variants into the 0.93578 file only when the model variant improved both validation days.
+
+The scripts follow the original workspace layout. They read the competition data and original refiner caches from `data/raw` and `data/gpu_runs/highres_refiner`, and the visual audit and baseline CSVs from `../../outputs`. The local audit archive includes images and reproduction inputs. The repository stores the tabular annotations, scripts and results. The annotated frames, original dataset, large feature caches and model weights remain local.
+
+The manual boxes are a partial reconstruction for the scored detections. Uncertain decisions are recorded explicitly. The visual decisions and changes derived from them have no independent test labels, so their Public AP is unknown until a submission is evaluated.

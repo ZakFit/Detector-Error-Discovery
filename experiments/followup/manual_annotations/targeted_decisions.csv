@@ -1,0 +1,31 @@
+review_number,decision,note
+7,review,Seated lower body concealed by table
+9,review,Seated lower body concealed by table
+16,review,Seated lower body concealed by table
+66,review,Two adjacent people and concealed lower bodies
+115,review,Lower legs partly mixed with chair silhouette
+117,review,Foreground person obscures the lower edge
+118,review,Back and legs partly occluded by furniture
+129,review,Table covers lower body
+136,review,Cup visible but its tight box is close to the cutoff
+140,review,Table covers lower body
+142,correct,Entire rectangular tray is inside the box with small margins
+149,review,Lower body concealed and arms extend toward table
+150,correct,Entire rectangular tray is inside the box with small margins
+186,review,Table covers lower body
+215,review,Visible shoe lies below the box but whole-person IoU may still pass
+228,review,Blurred bare hand with uncertain wrist and lower edge
+229,review,Coat draped on chair makes lower edge ambiguous
+234,review,Motion blur and truncation at the frame edge
+242,review,Lower legs blend with shadows
+280,review,Largely right hand but wrist and little finger are close to cutoff
+283,correct,Reclining person and visible limbs fit the proposal
+299,review,Lower legs blend with shadows under the table
+302,correct,Rectangular tray fits proposal despite extra right margin
+322,review,Foot and leg extent unclear under table edge
+347,review,Lower legs blend with shadows under the table
+351,review,Hidden lower legs
+352,review,Hidden lower legs
+357,review,Hidden lower legs
+359,review,Part of trouser leg is visible but its end is obscured
+361,review,Coat and legs are occluded by table and chair

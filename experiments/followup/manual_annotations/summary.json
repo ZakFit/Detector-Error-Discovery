@@ -1,0 +1,30 @@
+{
+  "detections": 362,
+  "frames": 128,
+  "frames_with_detections": 86,
+  "reconstructed_objects": 296,
+  "review_quality": {
+    "high": 152,
+    "medium": 137,
+    "low": 73
+  },
+  "review_labels": {
+    "uncertain": 204,
+    "error": 91,
+    "correct": 67
+  },
+  "nominal_errors": 176,
+  "conservative_changes": 48,
+  "official_matching_check": {
+    "evaluated_detections": 198,
+    "exact_label_agreement": 198
+  },
+  "blind_control": {
+    "n": 24,
+    "exact_matches": 17,
+    "accuracy": 0.7083333333333334,
+    "limitations": "Small non-independent frame sample; class-balanced; not an estimate of test accuracy"
+  },
+  "baseline_ap_against_own_nominal_labels": 0.8972639203680304,
+  "created_utc": "2026-11-14T14:07:17.185884+00:00"
+}

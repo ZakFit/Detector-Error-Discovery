@@ -1,0 +1,13 @@
+[
+ {"review_number":12,"box":[29,22,46,43],"quality":"medium","note":"Context reveals forearm in candidate; actual hand above it"},
+ {"review_number":35,"box":[21,20,60,59],"quality":"medium","note":"Context separates adult from child and stroller; adult reconstructed"},
+ {"review_number":45,"box":null,"quality":"high","note":"Context confirms phone and food wrapper; not cup"},
+ {"review_number":174,"box":[36,16,68,67],"quality":"medium","note":"Context shows side knee and foot; exclude bag and empty chair"},
+ {"review_number":177,"box":[34,15,70,70],"quality":"medium","note":"Side knee and foot visible; exclude bag below"},
+ {"review_number":227,"box":[38,55,55,65],"quality":"low","note":"Folded arms; upper skin patch is forearm; lower visible hand"},
+ {"review_number":239,"box":[32,48,52,75],"quality":"low","note":"Foreground fingers overlap background hand holding food"},
+ {"review_number":296,"box":null,"quality":"high","note":"Context confirms pink sleeve not bare hand"},
+ {"review_number":298,"box":null,"quality":"high","note":"Same pink sleeve false positive as 296"},
+ {"review_number":300,"box":[27,39,74,100],"quality":"low","note":"Standing woman lower body hidden by foreground person and frame edge"},
+ {"review_number":361,"box":[28,12,75,82],"quality":"medium","note":"Standing person long coat and lower legs partly behind chair"}
+]
