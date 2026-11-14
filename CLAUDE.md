@@ -18,7 +18,13 @@ ln -sfn .kagglehub/competitions/rascar-hack-case-1 data/raw
 ```
 pandas 3: в `features.py` выставлено `future.infer_string=False`, иначе numpy-бродкастинг строковых колонок падает.
 
-## Текущее лучшее решение — Public 0.842 (`final_ft.py`)
+## Итоговое решение — Public 0.91688 (`make_submission.py`)
+`python make_submission.py` → `submission.csv` (побайтно равен отправленному, сверка по sha256).
+Этап 0.911 (`submissions/team_person_refiner_280.csv`, скрипты `audit_*`: YOLO11s на кропах, вероятности/дубли,
+рефайнер людей на DINOv2-L) + порядок людей из `person_pipeline/` (DEIMv2 + RTMPose + LR), ранги 50/50
+(`final_people.py --blend 0.5`). Путь по этапам и веса — README.md.
+
+## Этап 0.842 (`final_ft.py`) — основа для рук/чашек/подносов
 Идея: confidence детектора на test переносится плохо; лучше заново «разметить» кадр и оценивать детекцию по IoU
 с этими боксами (это напрямую эмулирует правило метки). score = среднее двух частей:
 1. Переразметка открытыми моделями (`reannotate.py`, сама по себе 0.712):

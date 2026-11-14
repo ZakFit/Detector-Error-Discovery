@@ -1,0 +1,146 @@
+{
+  "validation": "leave-one-UTC-day-out; model choice uses these same small validation folds",
+  "non_person_baseline": "1-confidence (team reannotate_mean predictions not supplied)",
+  "candidates": {
+    "confidence": {
+      "folds": [
+        {
+          "day": "20261025",
+          "train_days": [
+            "20261026"
+          ],
+          "training_rows": 52,
+          "validation_rows": 32,
+          "person_ap": 0.8020593839971831,
+          "overall_ap_direct": 0.8607372472542775,
+          "overall_ap_rank": 0.8607372472542775,
+          "person_ap_after_rank_merge": 0.8020593839971831
+        },
+        {
+          "day": "20261026",
+          "train_days": [
+            "20261025"
+          ],
+          "training_rows": 32,
+          "validation_rows": 52,
+          "person_ap": 0.5958542122827837,
+          "overall_ap_direct": 0.7648071646769324,
+          "overall_ap_rank": 0.7648071646769324,
+          "person_ap_after_rank_merge": 0.5958542122827837
+        }
+      ],
+      "mean_person_ap": 0.6989567981399833,
+      "min_person_ap": 0.5958542122827837,
+      "pooled_person_ap": 0.6446517460736284
+    },
+    "detector_iou": {
+      "folds": [
+        {
+          "day": "20261025",
+          "train_days": [
+            "20261026"
+          ],
+          "training_rows": 52,
+          "validation_rows": 32,
+          "person_ap": 0.4294977292822121,
+          "overall_ap_direct": 0.6207139009286762,
+          "overall_ap_rank": 0.7940589981248428,
+          "person_ap_after_rank_merge": 0.4309236542769881
+        },
+        {
+          "day": "20261026",
+          "train_days": [
+            "20261025"
+          ],
+          "training_rows": 32,
+          "validation_rows": 52,
+          "person_ap": 0.43106239704620924,
+          "overall_ap_direct": 0.6094389130002169,
+          "overall_ap_rank": 0.7641860788035162,
+          "person_ap_after_rank_merge": 0.4801879801879802
+        }
+      ],
+      "mean_person_ap": 0.43028006316421064,
+      "min_person_ap": 0.4294977292822121,
+      "pooled_person_ap": 0.4089813436467783
+    },
+    "detector_lr": {
+      "folds": [
+        {
+          "day": "20261025",
+          "train_days": [
+            "20261026"
+          ],
+          "training_rows": 52,
+          "validation_rows": 32,
+          "person_ap": 0.7762412043509463,
+          "overall_ap_direct": 0.7420863814003819,
+          "overall_ap_rank": 0.8542303965793672,
+          "person_ap_after_rank_merge": 0.7595670394327595
+        },
+        {
+          "day": "20261026",
+          "train_days": [
+            "20261025"
+          ],
+          "training_rows": 32,
+          "validation_rows": 52,
+          "person_ap": 0.5961934387767818,
+          "overall_ap_direct": 0.6803246947048394,
+          "overall_ap_rank": 0.7659718245379761,
+          "person_ap_after_rank_merge": 0.5776673690959404
+        }
+      ],
+      "mean_person_ap": 0.6862173215638641,
+      "min_person_ap": 0.5961934387767818,
+      "pooled_person_ap": 0.5956150344616624
+    },
+    "detector_pose_lr": {
+      "folds": [
+        {
+          "day": "20261025",
+          "train_days": [
+            "20261026"
+          ],
+          "training_rows": 52,
+          "validation_rows": 32,
+          "person_ap": 0.9186715641261096,
+          "overall_ap_direct": 0.7992167566766024,
+          "overall_ap_rank": 0.8723454361029581,
+          "person_ap_after_rank_merge": 0.9147190378861934
+        },
+        {
+          "day": "20261026",
+          "train_days": [
+            "20261025"
+          ],
+          "training_rows": 32,
+          "validation_rows": 52,
+          "person_ap": 0.7270090221320988,
+          "overall_ap_direct": 0.7278907277990828,
+          "overall_ap_rank": 0.8048263574173771,
+          "person_ap_after_rank_merge": 0.7151770044627188
+        }
+      ],
+      "mean_person_ap": 0.8228402931291042,
+      "min_person_ap": 0.7270090221320988,
+      "pooled_person_ap": 0.75943052345873
+    }
+  },
+  "train_person_rows": 84,
+  "test_person_rows": 153,
+  "selected": "detector_pose_lr",
+  "selection_rule": "non-worse than confidence on each day, then maximum worst-day person AP, then mean AP",
+  "feature_columns": [
+    "confidence",
+    "det_iou",
+    "det_score",
+    "bottom_delta",
+    "top_delta",
+    "log_area_ratio",
+    "pose_box_iou",
+    "pose_quality",
+    "pose_outside",
+    "feet_missing"
+  ]
+}

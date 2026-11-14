@@ -1,0 +1,15 @@
+{
+  "max_abs_difference_first_50": {
+    "labels": 0.0,
+    "boxes": 0.000244140625,
+    "scores": 4.06801700592041e-06
+  },
+  "seconds": 8.158964500000366,
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "batch_size": 1,
+  "precision": "FP32",
+  "torch": "2.15.0+cpu",
+  "onnxruntime": "1.32.0"
+}

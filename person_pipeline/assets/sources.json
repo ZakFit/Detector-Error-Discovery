@@ -1,0 +1,36 @@
+{
+  "deim_code_commit": "f005f50ce565e63f6c298feccb51901a98c3d035",
+  "deim_weights_revision": "c5db2fc6f4d9e59635cfc2effaf097bc9a293beb",
+  "artifacts": [
+    {
+      "file": "deim_code.zip",
+      "url": "https://codeload.github.com/Intellindust-AI-Lab/DEIMv2/zip/f005f50ce565e63f6c298feccb51901a98c3d035",
+      "sha256": "cb9ad7c72b25ab22388c30631ded5a2ffaf54e897bdd421777d3a482923e5a9e",
+      "bytes": 1590262
+    },
+    {
+      "file": "deim_m.safetensors",
+      "url": "https://huggingface.co/Intellindust/DEIMv2_DINOv3_M_COCO/resolve/c5db2fc6f4d9e59635cfc2effaf097bc9a293beb/model.safetensors",
+      "sha256": "f5d6beb9c032b7cdd24da6eebf6966da6c7d2d49b312ac6c0198f112170c0af6",
+      "bytes": 73752660
+    },
+    {
+      "file": "deim_config.json",
+      "url": "https://huggingface.co/Intellindust/DEIMv2_DINOv3_M_COCO/resolve/c5db2fc6f4d9e59635cfc2effaf097bc9a293beb/config.json",
+      "sha256": "468aa716b1cec24298dfdba4c07c07eab1ff4b6e7a3a64c7396a367a93d7a67b",
+      "bytes": 1322
+    },
+    {
+      "file": "rtmpose_m26.zip",
+      "url": "https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/onnx_sdk/rtmpose-m_simcc-body7_pt-body7-halpe26_700e-256x192-4d3e73dd_20230605.zip",
+      "sha256": "55b81170e236040b59fc792ad0a8315301ac4c079a3bdb1095d838aad3088d18",
+      "bytes": 52089522
+    },
+    {
+      "file": "RTMPOSE_LICENSE",
+      "url": "https://raw.githubusercontent.com/open-mmlab/mmpose/main/LICENSE",
+      "sha256": "aa2c6f3408169b96e5547c875deb481c91502514c1885fa0acb4b596c8909cb9",
+      "bytes": 11400
+    }
+  ]
+}
