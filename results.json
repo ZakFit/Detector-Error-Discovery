@@ -1,0 +1,103 @@
+[
+  {
+    "file": "submissions/submission_yolo_pose.csv",
+    "reported_public_ap": 0.83915,
+    "sha256": "f04a59a9689dbcdfd5962ee3fdc32cc2a9591acc3377168d29122ce240f28f9b"
+  },
+  {
+    "file": "submissions/submission_crop_person_0842.csv",
+    "reported_public_ap": 0.86558,
+    "sha256": "1323a25926e41e1e799729a23fea7d473c6bb28a5ae9dbf9d16c85b7639b9348"
+  },
+  {
+    "file": "submissions/submission_multiview_duplicates.csv",
+    "reported_public_ap": 0.88899,
+    "sha256": "c34519fd6a7ae528c571efed0659f2affc8d624e2d34ffebad48aec5138bd01a"
+  },
+  {
+    "file": "submissions/submission_refinement_person_geometry_half.csv",
+    "reported_public_ap": 0.90734,
+    "sha256": "a87f3c45ccc5ffe81694356fd136305d7e7d86741d60c823fb53c0a083cce9a1"
+  },
+  {
+    "file": "submissions/submission_person_refiner_280.csv",
+    "reported_public_ap": 0.91063,
+    "sha256": "bf2a55338bc8be7abe80623b082fa032d813ccc6c9f3e772e24fb92fb52ac0de"
+  },
+  {
+    "file": "submissions/submission_093578_full.csv",
+    "reported_public_ap": 0.93578,
+    "sha256": "612076ad29f15f6b0b52ce8b82d29703b29954175a313bd6526ff24dfd4085bb"
+  },
+  {
+    "file": "submissions/submission_093578_duplicate_pair.csv",
+    "reported_public_ap": 0.93578,
+    "sha256": "0b04a6dfb117a1601f7a9b35ae8c858c19345401229a7e19285458187e1bccf7"
+  },
+  {
+    "file": "submissions/submission_093578_targeted_plus_duplicate.csv",
+    "reported_public_ap": 0.93578,
+    "sha256": "d2b3a4f04edadd23eeaef1b0d1859df3ddd1e051d94a7455841d2c5f807123c6"
+  },
+  {
+    "file": "submissions/submission_cpu_review_v1.csv",
+    "reported_public_ap": 0.93745,
+    "sha256": "215c2c6449c90dc8489bd307c7f0c773ebef61e7c44a25130b0ae5797e50860f"
+  },
+  {
+    "file": "submissions/submission_cpu_joint_geometry_v2.csv",
+    "reported_public_ap": 0.97914,
+    "sha256": "d44768a488c0082a6710cfb8ec1aa3781bf1dac11da27621ad34e43437f60e1c"
+  },
+  {
+    "file": "submissions/submission_cpu_joint_geometry_v3.csv",
+    "reported_public_ap": 0.97534,
+    "sha256": "d82ef2956ae124ba06289fd4b7c9b5b2d1446db22aeb80a28374f08ec43033f6"
+  },
+  {
+    "file": "submissions/submission_v2_people_ruslan_rank50.csv",
+    "reported_public_ap": 0.97914,
+    "sha256": "15d98deaba0fe6eb512669ca30bcb616f68abb86de1e1062b7c65bce1e183a56"
+  },
+  {
+    "file": "submissions/submission_v2_visual_geometry_high_upside.csv",
+    "reported_public_ap": 0.98081,
+    "sha256": "f3fc4029c6e679eb14d8cee6e33339a9f3514b937dfa922e80a581f81ca33b17",
+    "reference": true
+  },
+  {
+    "file": "submissions/sub_ft_all.csv",
+    "reported_public_ap": 0.842,
+    "sha256": "85d8fb430c8793ef6efe7c9fa5dcfd84584b433aacf1109487024abb28248f6f"
+  },
+  {
+    "file": "submissions/team_person_refiner_280_people_blend0.5.csv",
+    "reported_public_ap": 0.91688,
+    "sha256": "6b41ce09021e30f272fb8f2c4557823f3406c062c958f0efa34306747d3ac44e"
+  },
+  {
+    "file": "submissions/submission_v2_final_local_geometry.csv",
+    "reported_public_ap": null,
+    "sha256": "b4b917afacc8be2f4e867b31cc246d852c01bc0037f3562301e088a1eebba57d"
+  },
+  {
+    "file": "submissions/submission_v2_final_extended_geometry.csv",
+    "reported_public_ap": null,
+    "sha256": "99ca544a17a75176275295bad1eddecd9aa8818ac0a7556e5e5220cc1c180752"
+  },
+  {
+    "file": "submissions/submission_v2_only_hand_248_252.csv",
+    "reported_public_ap": null,
+    "sha256": "c6515970dc685e824c49c76c31c394dc3f1834a3a1be1e1399b1962ea1200680"
+  },
+  {
+    "file": "submissions/submission_v2_scene_variants.csv",
+    "reported_public_ap": null,
+    "sha256": "d7d5b9d711d7e971f105dbad1447efef51c75522a215f051f1060a79a95e8573"
+  },
+  {
+    "file": "submissions/submission_v2_scene_robust.csv",
+    "reported_public_ap": null,
+    "sha256": "d44768a488c0082a6710cfb8ec1aa3781bf1dac11da27621ad34e43437f60e1c"
+  }
+]
